@@ -1,5 +1,6 @@
-let btnCopy = document.getElementById('btnCopy');
-let btnPaste = document.getElementById('btnPaste');
+let btnJasper = document.getElementById('btnJasper');
+let btnBAS = document.getElementById('btnBAS');
+let btnACS = document.getElementById('btnACS');
 
 // console.log(changeColor);
 // changeColor.addEventListener('click', () => {
@@ -9,28 +10,17 @@ let btnPaste = document.getElementById('btnPaste');
 // 	changeColor.style.backgroundColor = data.color;
 // 	changeColor.setAttribute('value', data.color);
 // });
-
 // let obj;
 
-// Paste button event handler
-btnPaste.onclick = function(element) {
-	// Get active tab id
-	chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
-		// Inject file in active tab
-		console.log(tabs);
-		chrome.tabs.executeScript(tabs[0].id, { file: '/asset/js/inject2.js' });
-	});
-};
-
-// Copy button event handler
-btnCopy.onclick = function(element) {
+// Copy data from Jasper
+btnJasper.onclick = function(element) {
 	// Get active tab id
 	chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
 		chrome.tabs.executeScript(
 			tabs[0].id,
 			{
 				// code: 'document.body.style.backgroundColor = "' + color + '";'
-				file: '/asset/js/inject1.js'
+				file: '/asset/js/injectJasper.js'
 				// code: 'var x = 10; x'
 			}
 			// ,
@@ -41,5 +31,25 @@ btnCopy.onclick = function(element) {
 			// 	});
 			// }
 		);
+	});
+};
+
+// Paste data to BAS
+btnBAS.onclick = function(element) {
+	// Get active tab id
+	chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+		// Inject file in active tab
+		console.log(tabs);
+		chrome.tabs.executeScript(tabs[0].id, { file: '/asset/js/injectBAS.js' });
+	});
+};
+
+// Paste data to ACS
+btnBAS.onclick = function(element) {
+	// Get active tab id
+	chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+		// Inject file in active tab
+		console.log(tabs);
+		chrome.tabs.executeScript(tabs[0].id, { file: '/asset/js/injectACS.js' });
 	});
 };

@@ -1,3 +1,7 @@
+// injectJasper.js
+//
+// Get data from Jasper
+//
 (() => {
 	// document.body.style.backgroundColor = '#FF0000';
 
@@ -14,7 +18,8 @@
 			if (cell.style.backgroundColor === 'rgb(204, 204, 204)' && cell.hasChildNodes()) {
 				// console.log(cell.firstElementChild.innerText);
 				// obj[cell.firstElementChild.innerText.toLowerCase()] = row.cells[++i].firstElementChild
-				obj[cell.firstElementChild.innerText.replace(/(\r\n|\n|\r)/gm," ")] = row.cells[++i].firstElementChild
+				obj[cell.firstElementChild.innerText.replace(/(\r\n|\n|\r)/gm, ' ')] = row.cells[++i]
+					.firstElementChild
 					? row.cells[i].firstElementChild.innerText
 					: '';
 			}
