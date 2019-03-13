@@ -45,7 +45,7 @@ btnBAS.onclick = function(element) {
 };
 
 // Paste data to ACS
-btnBAS.onclick = function(element) {
+btnACS.onclick = function(element) {
 	// Get active tab id
 	chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
 		// Inject file in active tab
