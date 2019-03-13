@@ -1,0 +1,39 @@
+body {
+	padding: 10px;
+	min-width: 150px;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+label {
+	font-size: 12px;
+}
+
+.button {
+	background-color: #98aae8;
+	border: none;
+	color: white;
+	padding: 10px;
+	width: 70px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 14px;
+	margin: 4px 0px;
+	cursor: pointer;
+}
+
+.button:active {
+	background-color: #8396f1;
+}
+
+.control {
+	margin: 10px 0 10px 0;
+}
+
+.top-m-20 {
+	margin-top: 20px;
+}
+
+.m20 {
+	margin: 20px 0 20px 0;
+}
