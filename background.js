@@ -4,32 +4,42 @@
 
 'use strict';
 
-// // Rule for activacte extension
-// var rule1 = {
-// 	conditions: [
-// 		new chrome.declarativeContent.PageStateMatcher({
-// 			pageUrl: { hostEquals: '127.0.0.1' }
-// 		}),
-// 		new chrome.declarativeContent.PageStateMatcher({
-// 			pageUrl: { hostEquals: '10.24.129.5' }
-// 		}),
-// 		new chrome.declarativeContent.PageStateMatcher({
-// 			pageUrl: { hostEquals: 'sdisc1p.dc.ht.hr' }
-// 		})
-// 	],
-// 	actions: [new chrome.declarativeContent.ShowPageAction()]
-// };
+// Rule for activacte extension
+var rule1 = {
+	conditions: [
+		// localhost
+		new chrome.declarativeContent.PageStateMatcher({
+			pageUrl: { hostEquals: '127.0.0.1' }
+		}),
+		// Jasper
+		new chrome.declarativeContent.PageStateMatcher({
+			pageUrl: { hostEquals: 'sdisc1p.dc.ht.hr' }
+		}),
 
-// // On instaled extension event
-// chrome.runtime.onInstalled.addListener(function() {
-// 	// Set attribute in browser storage
-// 	// chrome.storage.sync.set({ color: '#3aa757' }, function() {
-// 	// 	console.log('On installed event handler.');
-// 	// });
+		// BAS ZG
+		new chrome.declarativeContent.PageStateMatcher({
+			pageUrl: { hostEquals: '10.24.129.5' }
+		}),
+		// BAS RI
+		new chrome.declarativeContent.PageStateMatcher({
+			pageUrl: { hostEquals: '10.23.129.5' }
+		}),
+		// ACS
+		new chrome.declarativeContent.PageStateMatcher({
+			pageUrl: { hostEquals: 'kacs-lb.ip.t-com.hr' }
+		})
+	],
+	actions: [new chrome.declarativeContent.ShowPageAction()]
+};
 
-// 	// Activae extention only for pages defined in 'rule1'
-// 	chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
-// 		chrome.declarativeContent.onPageChanged.addRules([rule1]);
-// 	});
-// });
-
+// On instaled extension event
+chrome.runtime.onInstalled.addListener(function() {
+	// Set attribute in browser storage
+	// chrome.storage.sync.set({ color: '#3aa757' }, function() {
+	// 	console.log('On installed event handler.');
+	// });
+	// Activae extention only for pages defined in 'rule1'
+	chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
+		chrome.declarativeContent.onPageChanged.addRules([rule1]);
+	});
+});
