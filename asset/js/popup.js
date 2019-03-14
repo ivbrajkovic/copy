@@ -46,33 +46,43 @@ btnBAS.onclick = function(element) {
 
 // Paste data to ACS
 btnACS.onclick = function(element) {
-	// // Get active tab id
-	// chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
-	// 	// Inject file in active tab
-	// 	console.log(tabs);
-	// 	chrome.tabs.executeScript(tabs[0].id, { file: '/asset/js/injectACS.js' });
-	// });
-	// chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
-	// 	//Send a message to a tab which has your content script injected
-	// 	chrome.tabs.sendMessage(tabs[0].id, { action: 'GET_DUCK' });
-	// 	console.log('message sent');
-	// });
-
-	chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
-		chrome.tabs.sendMessage(tabs[0].id, 'asset_modify_actions', data => {
-			console.log(data);
-			// do something with config
-
-			// var args = { info: config };
-			chrome.tabs.executeScript(
-				tabs[0].id,
-				{
-					code: 'var asset_modify_actions = ' + JSON.stringify(data)
-				},
-				function() {
-					chrome.tabs.executeScript(tabs[0].id, { file: '/asset/js/injectACS.js' });
-				}
-			);
-		});
+	// Get active tab id
+	chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+		// Inject file in active tab
+		// console.log(tabs);
+		chrome.tabs.executeScript(tabs[0].id, { file: '/asset/js/injectACS.js' });
 	});
 };
+
+// Paste data to ACS
+// btnACS.onclick = function(element) {
+// // Get active tab id
+// chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+// 	// Inject file in active tab
+// 	console.log(tabs);
+// 	chrome.tabs.executeScript(tabs[0].id, { file: '/asset/js/injectACS.js' });
+// });
+// chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+// 	//Send a message to a tab which has your content script injected
+// 	chrome.tabs.sendMessage(tabs[0].id, { action: 'GET_DUCK' });
+// 	console.log('message sent');
+// });
+
+// chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
+// 	chrome.tabs.sendMessage(tabs[0].id, 'asset_modify_actions', data => {
+// 		console.log(data);
+// 		// do something with config
+
+// 		// var args = { info: config };
+// 		chrome.tabs.executeScript(
+// 			tabs[0].id,
+// 			{
+// 				code: 'var asset_modify_actions = ' + JSON.stringify(data)
+// 			},
+// 			function() {
+// 				chrome.tabs.executeScript(tabs[0].id, { file: '/asset/js/injectACS.js' });
+// 			}
+// 		);
+// 	});
+// });
+// };

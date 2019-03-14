@@ -28,8 +28,9 @@
 	"content_scripts": [
 		{
 			"matches": ["<all_urls>"],
+			"run_at": "document_end",
 			"js": ["contentScript.js"]
 		}
 	],
-	"web_accessible_resources": ["pageScript.js"]
+	"web_accessible_resources": ["injectACS.js", "script.js", "pageScript.js", "contentScript.js"]
 }
