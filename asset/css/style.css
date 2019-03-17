@@ -1,39 +1,76 @@
-body {
-	padding: 10px;
-	min-width: 150px;
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+* {
+	--background-color: #DE0075;
 }
 
-label {
-	font-size: 12px;
+body {
+	margin: 10px;
+	/* min-width: 150px; */
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	font-size: 14px;
+}
+
+#control {
+	width: 190px;
+	/* background-color: aqua; */
+}
+
+#titleSection {
+	height: 150px;
+	/* width: 180px; */
+	background-image: url(/asset/images/tcom.gif);
+}
+
+#titleSection label {
+	display: block;
+	padding-top: 10px;
+	color: white;
+	text-align: center;
+	font-weight: bolder;
+}
+
+#inputSection > div {
+	width: 65%;
+	display: inline-block;
+}
+
+#inputSection input {
+	display: block;
+	width: 100%;
+	padding: 0;
+	margin: 0 0 3px 0;
+	border: none;
+	border-bottom: 1px solid var(--background-color);
+}
+
+#inputSection button {
+	float: right;
+}
+
+#copySection {
+	display: flex;
+	justify-content: space-between;
 }
 
 .button {
-	background-color: #98aae8;
+	display: inline-block;
+	width: 55px;
+	margin: 0;
+	padding: 10px 0 10px 0;
 	border: none;
 	color: white;
-	padding: 10px;
-	width: 70px;
+	background-color:var(--background-color);
 	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-	font-size: 14px;
-	margin: 4px 0px;
 	cursor: pointer;
+	border: none;
+ 	transition: all ease-in-out 0.3s;
+  cursor: pointer;
 }
 
+.button:hover, 
 .button:active {
-	background-color: #8396f1;
+	background-color: black;
 }
 
-.control {
+.section {
 	margin: 10px 0 10px 0;
-}
-
-.top-m-20 {
-	margin-top: 20px;
-}
-
-.m20 {
-	margin: 20px 0 20px 0;
 }

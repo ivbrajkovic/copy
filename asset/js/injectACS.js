@@ -1,24 +1,42 @@
-window.addEventListener(
-	'message',
-	handler
-	// { once: true }
-);
+// injectACS.js
+//
+// Inject IMS data for FX 0 port on modem
+//
+(() => {
+	chrome.storage.sync.get('data', function (data) {
+		console.log(data.data);
 
-// setTimeout(function() {
-console.log('page javascript sending message');
-window.postMessage(
-	{ type: 'asset_modify_actions', text: "Hello from the page's javascript!" },
-	'*' /* targetOrigin: any */
-);
-// }, 2000);
+		// Open service panel
+		//document.getElementById('edit_service_panel_c').style.visibility = 'visible';
 
-// console.log(asset_modify_actions);
+		// Open service panel
+		document.getElementById('service_change_params').click();
 
-function handler(event) {
-	console.log('injectACS.js got message:', event.data.type);
+		// Give time to get data (500ms)
+		setTimeout(() => {
+			// // SIP Server 1
+			// document.getElementById('service_fxs0_sip_server_address_check').checked = true;
+			// document.getElementById('service_fxs0_sip_server_address').value = "172.29.165.136"
 
-	if (event.data.type === 'asset_modify_actions_send') {
-		console.log('page javascript got message:', event.data.asset_modify_actions);
-		window.removeEventListener('message', handler);
-	}
-}
+			// // Sec SIP Server 1
+			// document.getElementById('service_fxs0_secsip_server_address_check').checked = true;
+			// document.getElementById('service_fxs0_secsip_server_address').value = "10.24.23.167"
+
+			// SIP URI 1
+			document.getElementById('service_fxs0_sip_uri_check').click();
+			document.getElementById('service_fxs0_sip_uri').value = data.data['Public ID'].replace(
+				/sip:\+|@ims.t-com.hr/g,
+				''
+			);
+
+			// SIP Username 1
+			// document.getElementById('service_fxs0_sip_username_check').checked = true;
+			document.getElementById('service_fxs0_sip_username_check').click();
+			document.getElementById('service_fxs0_sip_username').value = data.data['Private ID'];
+
+			// SIP Password 1
+			document.getElementById('service_fxs0_sip_password_check').click();
+			document.getElementById('service_fxs0_sip_password').value = data.data['User password'];
+		}, 500);
+	});
+})();

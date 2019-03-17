@@ -1,1 +1,0 @@
-var info = 'Hej ti!';

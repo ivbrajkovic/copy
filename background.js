@@ -34,33 +34,8 @@ var rule1 = {
 
 // On instaled extension event
 chrome.runtime.onInstalled.addListener(function() {
-	// Set attribute in browser storage
-	// chrome.storage.sync.set({ color: '#3aa757' }, function() {
-	// 	console.log('On installed event handler.');
-	// });
 	// Activae extention only for pages defined in 'rule1'
 	chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
 		chrome.declarativeContent.onPageChanged.addRules([rule1]);
 	});
 });
-
-//background script is always running unless extension
-//is disabled
-
-// //Wait for some one connect to it
-// let contentPort;
-// chrome.runtime.onConnect.addListener(function(portFrom) {
-// 	if (portFrom.name === 'background-content') {
-// 		//This is how you add listener to a port.
-// 		portFrom.onMessage.addListener(function(message) {
-// 			//Do something to duck
-// 			console.log(message);
-// 			msg = message;
-// 		});
-// 	}
-// });
-
-// chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
-// 	//Send a message to a tab which has your content script injected
-// 	chrome.tabs.sendMessage(tabs[0].id, { action: 'GET_DUCK' });
-// });
